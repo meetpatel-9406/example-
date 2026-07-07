@@ -12,8 +12,8 @@
     <main class="shell">
       <section class="hero">
         <div class="eyebrow">📘 Editable textbook PDF to Word</div>
-        <h1>Convert PDFs to editable .docx files.</h1>
-        <p>This converter extracts selectable PDF text and rebuilds it as editable Word paragraphs, keeping textbook reading order, indentation, page sizes, and math glyphs where the PDF exposes them as text.</p>
+        <h1>Create textbook-accurate .docx files.</h1>
+        <p>This converter keeps every PDF page visually exact for LaTeX, KaTeX, MathJax, diagrams, and alignment, then adds editable text pages after the exact textbook pages.</p>
       </section>
       <section class="converter-card">
         <button id="dropZone" class="drop-zone" type="button">
@@ -22,13 +22,13 @@
           <span id="fileMeta">Your browser converts it locally.</span>
         </button>
         <input id="fileInput" class="hidden-input" type="file" accept="application/pdf,.pdf" />
-        <button id="convertButton" class="convert-button" disabled>⬇ Create editable DOCX</button>
+        <button id="convertButton" class="convert-button" disabled>⬇ Create textbook DOCX</button>
         <div id="progress" class="progress" hidden></div>
         <p id="message" class="message">Choose a PDF to begin.</p>
       </section>
       <section class="features" aria-label="conversion guarantees">
-        <article><span>🛡️</span><h2>Format locked</h2><p>Each DOCX page uses the PDF page size and line indentation to keep the textbook structure familiar.</p></article>
-        <article><span>Σ</span><h2>Math preserved</h2><p>LaTeX, KaTeX, MathJax, and equation glyphs remain editable when the PDF stores them as selectable text.</p></article>
+        <article><span>🛡️</span><h2>Format locked</h2><p>Exact visual pages use the original PDF page size with zero margins, so alignment and textbook layout stay fixed.</p></article>
+        <article><span>Σ</span><h2>Math preserved</h2><p>Formula appearance is preserved by rendering the PDF page itself, avoiding broken superscripts or shifted symbols.</p></article>
         <article><span>📄</span><h2>Word output</h2><p>The result opens in Microsoft Word, Google Docs, and LibreOffice as a .docx file.</p></article>
       </section>
     </main>
