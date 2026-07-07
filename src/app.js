@@ -48,15 +48,19 @@ function paragraphXml(line, pageWidthPt) {
   return `<w:p><w:pPr><w:ind w:left="${leftTwips}"/><w:spacing w:before="0" w:after="${spacingAfter}"/><w:tabs><w:tab w:val="left" w:pos="${pointsToTwips(availableWidth)}"/></w:tabs></w:pPr>${textRunXml(line.text, fontSize)}</w:p>`;
 }
 
-function groupItemsIntoEditableLines(items) {
+function groupItemsIntoEditableLines(items = []) {
   const rows = [];
 
   for (const item of items) {
-    const [, , , , x, y] = item.transform;
-    const text = item.str || '';
+    if (!item || typeof item.str !== 'string' || !Array.isArray(item.transform) || item.transform.length < 6) {
+      continue;
+    }
+
+    const [, , scaleX, scaleY, x, y] = item.transform;
+    const text = item.str;
     if (!text.trim()) continue;
 
-    const fontSize = Math.hypot(item.transform[2], item.transform[3]) || Math.abs(item.transform[3]) || 11;
+    const fontSize = Math.hypot(scaleX, scaleY) || Math.abs(scaleY) || 11;
     let row = rows.find((candidate) => Math.abs(candidate.y - y) <= LINE_Y_TOLERANCE);
     if (!row) {
       row = { y, items: [] };
